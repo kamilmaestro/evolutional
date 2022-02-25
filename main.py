@@ -15,19 +15,19 @@ from sklearn.tree import DecisionTreeClassifier
 from csvReader import getFileToAnalyze, FileType
 from fileDecorator import dropColumns
 
-selectionMethod = 'best'
+selectionMethod = 'tournament'
 crossover = 'onepoint'
 minimization = False
 sizePopulation = 50
 probabilityMutation = 0.3
 probabilityCrossover = 0.4
-numberIteration = 100
+numberIteration = 25
 numberElitism = 4
 selection = True
-classifier = 'AdaBoostClassifier'  # SVC KNeighborsClassifier DecisionTreeClassifier RandomForestClassifier GaussianNB AdaBoostClassifier
+classifier = 'SVC'  # SVC KNeighborsClassifier DecisionTreeClassifier RandomForestClassifier GaussianNB AdaBoostClassifier
 std = 0
 
-fileType = FileType.PARKINSON
+fileType = FileType.HEART
 file = getFileToAnalyze(fileType)
 yAxis = file['Status'] if fileType == FileType.PARKINSON else file['output']
 
@@ -292,7 +292,7 @@ while g < numberIteration:
 print("-- End of (successful) evolution --")
 t2 = time.time()
 
-with open('results_project_4.csv', 'w') as f:
+with open('results.csv', 'w') as f:
     for result in results:
         f.write(str(result) + '\n')
     f.write(str(t2 - t1))

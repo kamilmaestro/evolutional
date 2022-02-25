@@ -31,7 +31,7 @@ def plotResults(title, values, show=False):
 
 
 if __name__ == '__main__':
-    mean, std, values, time = getValuesFromFile('results_project_4.csv')
+    mean, std, values, time = getValuesFromFile('results.csv')
     plotResults('Mean', mean, show=True)
     plotResults('Std', std, show=True)
     plotResults('Function', values, show=True)
